@@ -9,8 +9,8 @@ exports.run = (client, message, args) => {
             .setColor('7EBCAD')
             .setTitle('Commandes du bot')
             .addField('\n\nModération :', "`kick` `ban` `purge` `warn`")
-            .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo` `weather`")
-            .addField('\n\nFun :', "`ping` `test` `say`")
+            .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo`")
+            .addField('\n\nFun :', "`ping` `say`")
             .addField('\n\nInformations :', "`info` `fancreate` `fanshare`")
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
             .setTimestamp(new Date)
@@ -112,7 +112,7 @@ exports.run = (client, message, args) => {
                                     message.channel.send(helphelpembed)
                                 }
                                 else {
-                                    if(args[0] === "meteo") {
+                                    if(args[0] === "weather") {
                                         let weatherembed = new Discord.RichEmbed()
                                             .setColor(embedcolor)
                                             .setTitle('Commande : meteo')
@@ -137,6 +137,62 @@ exports.run = (client, message, args) => {
                                                 .setFooter(client.user.username, client.user.avatarURL)
                                             message.channel.send(idembed)
                                         }
+                                        else {
+                                            if(args[0] === "serverinfo") {
+                                                let siembed = new Discord.RichEmbed()
+                                                    .setColor(embedcolor)
+                                                    .setTitle("Commande : serverinfo")
+                                                    .addField("Description de la commande", "Affiche des informations sur le serveur actuel.")
+                                                    .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                    .addField("Utilisation", "`r!serverinfo`")
+                                                    .setTimestamp(new Date)
+                                                    .setThumbnail(client.user.avatarURL)
+                                                    .setFooter(client.user.username, client.user.avatarURL)
+                                                message.channel.send(siembed)
+                                            }
+                                            else {
+                                                if(args[0] === "channelinfo") {
+                                                    let chanlembd = new Discord.RichEmbed()
+                                                        .setColor(embedcolor)
+                                                        .setTitle("Commande : channelinfo")
+                                                        .addField("Description de la commande", "Affiche des informations sur le channel actuel ou un channel mentionné.")
+                                                        .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                        .addField("Utilisation", "`r!channelinfo`\n`r!channelinfo {channel}`")
+                                                        .setTimestamp(new Date)
+                                                        .setThumbnail(client.user.avatarURL)
+                                                        .setFooter(client.user.username, client.user.avatarURL)
+                                                    message.channel.send(chanlembd)
+                                                }
+                                                else {
+                                                    if(args[0] === "userinfo") {
+                                                        let usrembd = new Discord.RichEmbed()
+                                                            .setColor(embedcolor)
+                                                            .setTitle("Commande : userinfo")
+                                                            .addField("Description de la commande", "Affiche vos informations ou celles d'un utilisateur mentionné.")
+                                                            .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                            .addField('Utilisation', "`r!userinfo`\n`r!userinfo {utilisateur}`")
+                                                            .setTimestamp(new Date)
+                                                            .setThumbnail(client.user.avatarURL)
+                                                            .setFooter(client.user.username, client.user.avatarURL)
+                                                        message.channel.send(usrembd)
+                                                    }
+                                                    else {
+                                                        if(args[0] === "say") {
+                                                            let sayembed = new Discord.RichEmbed()
+                                                                .setColor(embedcolor)
+                                                                .setTitle("Commande : say")
+                                                                .addField("Description de la commande", "Fait parler le bot.")
+                                                                .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                                .addField("Utilisation", "`r!say {message}`")
+                                                                .setTimestamp(new Date)
+                                                                .setThumbnail(client.user.avatarURL)
+                                                                .setFooter(client.user.username, client.user.avatarURL)
+                                                            message.channel.send(sayembed)
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -146,5 +202,4 @@ exports.run = (client, message, args) => {
             }
         }
     }
-        
 }

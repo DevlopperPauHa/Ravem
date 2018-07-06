@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
             .setColor('7EBCAD')
             .setTitle('Commandes du bot')
             .addField('\n\nModération :', "`kick` `ban` `purge` `warn`")
-            .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo`")
+            .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo` `report`")
             .addField('\n\nFun :', "`ping` `say`")
             .addField('\n\nInformations :', "`info` `fancreate` `fanshare`")
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
@@ -188,6 +188,20 @@ exports.run = (client, message, args) => {
                                                                 .setThumbnail(client.user.avatarURL)
                                                                 .setFooter(client.user.username, client.user.avatarURL)
                                                             message.channel.send(sayembed)
+                                                        }
+                                                        else {
+                                                            if(args[0] === "report") {
+                                                                let reportembd = new Discord.RichEmbed()
+                                                                    .setColor(embedcolor)
+                                                                    .setTitle('Commande : report')
+                                                                    .addField("Description de la commande", "Vous voulez nous signaler un utilisateur ou bien une erreur ? Une faille ? Une anomalie ou encore un problème ? Cette commande vous aidera.\nNote : votre report doit contenir plus de 25 caractères.")
+                                                                    .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                                    .addField("Utilisation", "`r!report {votre raison}`")
+                                                                    .setTimestamp(new Date)
+                                                                    .setThumbnail(client.user.avatarURL)
+                                                                    .setFooter(client.user.username, client.user.avatarURL)
+                                                                message.channel.send(reportembd)
+                                                            }
                                                         }
                                                     }
                                                 }

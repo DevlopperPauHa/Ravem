@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
             .setColor('7EBCAD')
             .setAuthor(`Information sur ${usermtnd.username}`, usermtnd.avatarURL)
             .addField('Username', usermtnd.username)
-            .addField('Discriminateur', usermtnd.discriminator)
+            .addField('Discriminateur', "#" + usermtnd.discriminator)
             .addField('ID', usermtnd.id)
             .addField('Tag', usermtnd.tag)
             .addField('Statut', usermtnd.presence.status)

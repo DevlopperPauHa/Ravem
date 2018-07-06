@@ -30,6 +30,5 @@ exports.run = (client, message) => {
         reportcha.send(reportembed)
         message.channel.send("Votre report a bien été envoyé ! Nous vous donnerons des informations dès que possible !")
     }
-
     }
 }

@@ -11,7 +11,7 @@ const db = low(adapter)
 
 
 client.on("ready", () => {
-  client.user.setActivity('Ravem®, r!help', {
+  client.user.setActivity(`Ravem®, r!help | ${client.users.size} utilisateurs`, {
         type: 'Listening',
       });
       console.log("Bonjour Paulé, je suis prêt !");

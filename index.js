@@ -40,7 +40,7 @@ client.on('message', message => {
         let commandFile = require(`./commands/${command}.js`);
         commandFile.run(client, message, args);
       } catch (err) {
-        message.channel.send("`" + err + "`");
+        console.log(err);
     }
 });
 

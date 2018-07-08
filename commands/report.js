@@ -13,11 +13,6 @@ exports.run = (client, message) => {
         message.channel.send("Votre report doit faire au moins 25 caractères.")
     }
     else {
-        if(message.author.id === "376812375795302402") {
-            message.channel.send("Votre report a bien été envoyé.")
-        }
-        else {
-    }
 
     let reportguild = client.guilds.get("447920023827251201")
         let reportcha = reportguild.channels.get("465259561071280138")
@@ -37,6 +32,5 @@ exports.run = (client, message) => {
         reportcha.send(reportembed)
         message.channel.send("Votre report a bien été envoyé ! Nous vous donnerons des informations dès que possible !")
     }
-    }
-
+}
 }

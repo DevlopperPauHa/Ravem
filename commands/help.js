@@ -195,13 +195,27 @@ exports.run = (client, message, args) => {
                                                                 let reportembd = new Discord.RichEmbed()
                                                                     .setColor(embedcolor)
                                                                     .setTitle('Commande : report')
-                                                                    .addField("Description de la commande", "Vous voulez nous signaler un utilisateur ou bien une erreur ? Une faille ? Une anomalie ou encore un problème ? Cette commande vous aidera.\nNote : votre report doit contenir plus de 25 caractères.")
+                                                                    .addField("Description de la commande", "Vous voulez nous signaler un utilisateur ou bien une erreur ? Une faille ? Une anomalie ou encore un problème ? Cette commande vous aidera. Mais attention, pour les suggestions, faites `r!help suggest`.\nNote : votre report doit contenir plus de 25 caractères.")
                                                                     .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
                                                                     .addField("Utilisation", "`r!report {votre raison}`")
                                                                     .setTimestamp(new Date)
                                                                     .setThumbnail(client.user.avatarURL)
                                                                     .setFooter(client.user.username, client.user.avatarURL)
                                                                 message.channel.send(reportembd)
+                                                            }
+                                                            else {
+                                                                if(args[0] === "suggest") {
+                                                                    let suggestembed = new Discord.RichEmbed()
+                                                                        .setColor(embedcolor)
+                                                                        .setTitle('Commande : suggest')
+                                                                        .addField('Description de la commande', "Vous voulez nous faire parvenir une suggestion ? Cette commande est faite pour.")
+                                                                        .addField('Rappel', "Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l'exécution de votre commande.")
+                                                                        .addField('Utilisation', "`r!suggest {votre suggestion}`")
+                                                                        .setTimestamp(new Date)
+                                                                        .setThumbnail(client.user.avatarURL)
+                                                                        .setFooter(client.user.username, client.user.avatarURL)
+                                                                    message.channel.send(suggestembed)
+                                                                }
                                                             }
                                                         }
                                                     }

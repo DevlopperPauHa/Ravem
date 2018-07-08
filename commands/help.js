@@ -8,6 +8,7 @@ exports.run = (client, message, args) => {
         var help_embed = new Discord.RichEmbed()
             .setColor('7EBCAD')
             .setTitle('Commandes du bot')
+            .setDescription('Rappel : Les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l\'exécution de votre commande. \nNote : Vous pouvez aussi faire `r!help {commande}` pour avoir plus d\'informations sur celle-ci.\n\n')
             .addField('\n\nModération :', "`kick` `ban` `purge` `warn`")
             .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo` `report`")
             .addField('\n\nFun :', "`ping` `say`")

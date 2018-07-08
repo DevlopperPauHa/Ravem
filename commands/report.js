@@ -13,22 +13,30 @@ exports.run = (client, message) => {
         message.channel.send("Votre report doit faire au moins 25 caractères.")
     }
     else {
+        if(message.author.id === "376812375795302402") {
+            message.channel.send("Votre report a bien été envoyé.")
+        }
+        else {
+    }
 
     let reportguild = client.guilds.get("447920023827251201")
-        let reportcha = reportguild.channels.get("464873087708692500")
+        let reportcha = reportguild.channels.get("465259561071280138")
 
         let guildicon = message.guild.iconURL
+        let reportdate = message.createdAt.toString().split(" ")
         let useravatar = message.author.avatarURL
         let reportembed = new Discord.RichEmbed()
             .setColor("7EBCAD")
-            .setAuthor(`Nouveau report par ${message.author.username}#${message.author.discriminator} !`, useravatar)
-            .addField("Depuis le serveur", message.guild.name)
+            .setAuthor(`Nouveau report par ${message.author.username}#${message.author.discriminator} !`, guildicon)
+            .addField("Depuis le serveur :", message.guild.name)
+            .addField("Date du report :", reportdate[0] + ' ' + reportdate[2] + ' ' + reportdate[1] + ' ' + reportdate[3] + ", " + reportdate[4])
             .addField('Argumentation :', reportargs)
-            .setThumbnail(guildicon)
+            .setThumbnail(useravatar)
             .setTimestamp(new Date)
             .setFooter(client.user.username, client.user.avatarURL)
         reportcha.send(reportembed)
         message.channel.send("Votre report a bien été envoyé ! Nous vous donnerons des informations dès que possible !")
     }
     }
+
 }

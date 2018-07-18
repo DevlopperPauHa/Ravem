@@ -16,3 +16,14 @@ exports.run = (client, message) => {
             })
         })
 }
+
+exports.help = {
+    name: "purge",
+    description: "Pour purger des messages"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["prune", "clear"]
+}

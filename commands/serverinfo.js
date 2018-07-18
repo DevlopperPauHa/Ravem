@@ -21,3 +21,14 @@ exports.run = (client, message, args) => {
         console.log('serverinfo envoyé')
 
 }
+
+exports.help = {
+    name: "serverinfo",
+    description: "Donner des informations sur le serveur."
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["si", "infoserveur", "serveurinfo"]
+}

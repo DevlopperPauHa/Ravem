@@ -12,3 +12,15 @@ exports.run = (client, message) => {
             .setFooter(client.user.username, client.user.avatarURL)
         message.channel.send(avem)
 }
+
+exports.help = {
+    name: "avatar",
+    description: "Donne l'avatar d'un user.",
+    usage: "-avatar {utilisateur}"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["pp"]
+}

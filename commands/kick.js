@@ -48,3 +48,14 @@ exports.run = (client, message) => {
             userkick.kick()
         });
 }
+
+exports.help = {
+    name: "kick",
+    description: "Kick un utilisateur"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["kick"]
+}

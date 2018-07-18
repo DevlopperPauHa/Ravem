@@ -232,3 +232,14 @@ exports.run = (client, message, args) => {
         }
     }
 }
+
+exports.help = {
+    name: "help",
+    description: "Affiche le help"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["h"]
+}

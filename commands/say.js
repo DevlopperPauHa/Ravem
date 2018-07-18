@@ -4,6 +4,17 @@ exports.run = (client, message, args) => {
     }
     else{
         let sayMessage = args.join(" ")
-        message.channel.send(sayMessage)
+        message.channel.send(sayMessage, {disableEveryone:true})
     }
+}
+
+exports.help = {
+    name: "say",
+    description: "Faire parler le bot"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ["s"]
 }

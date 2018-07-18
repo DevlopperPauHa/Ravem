@@ -2,13 +2,13 @@ const Discord = require('discord.js')
 
 exports.run = (client, message, args) => {
 
-    let usermtnd = message.mentions.users.first() ? message.mentions.users.first() : message.author
+        let usermtnd = message.mentions.users.first() ? message.mentions.users.first() : message.author
         let usericon = usermtnd.avatarURL
         let onthesrv = message.guild.joinedAt.toString().split(" ")
         let usercreate = usermtnd.createdAt.toString().split(" ")
         let ui_embed = new Discord.RichEmbed()
             .setColor('7EBCAD')
-            .setAuthor(`Information sur ${usermtnd.username}`, usermtnd.avatarURL)
+            .setAuthor(`Information sur` + usermtnd.tag, usermtnd.avatarURL)
             .addField('Username', usermtnd.username)
             .addField('Discriminateur', "#" + usermtnd.discriminator)
             .addField('ID', usermtnd.id)
@@ -22,4 +22,15 @@ exports.run = (client, message, args) => {
             .setFooter(client.user.username, client.user.avatarURL)
         message.channel.send(ui_embed)
         console.log('ui envoyé')
+}
+
+exports.help = {
+    name: "userinfo",
+    description: "Avoir des informations sur un utilisateur"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ["ui"]
 }

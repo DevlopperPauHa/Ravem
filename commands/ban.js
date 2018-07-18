@@ -48,3 +48,14 @@ exports.run = (client, message) => {
             userban.ban()
         })
 }
+
+exports.help = {
+    name: "ban",
+    description: "Bannir un utilisateur."
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["ban"]
+}

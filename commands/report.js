@@ -34,3 +34,14 @@ exports.run = (client, message) => {
     }
 }
 }
+
+exports.help = {
+    name: "report",
+    description: "Pour reporter une anomalie"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["reporter"]
+}

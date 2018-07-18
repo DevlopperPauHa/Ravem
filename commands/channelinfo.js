@@ -22,3 +22,14 @@ exports.run = (client, message, args) => {
         console.log('channelinfo sent')
         
 }
+
+exports.help = {
+    name: "channelinfo",
+    description: "Donne des infot sur les canaux"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["ci"]
+}

@@ -6,7 +6,10 @@ exports.run = (client, message, args) => {
     weather.find({search: args, degreeType: 'C'}, function(err, result) {
         if(err) message.channel.send(err);
 
-        console.log(JSON.stringify(result, false, 2));
+        if(result.length === 0) {
+            message.channel.send("Merci de rentrer une localisation valable.")
+            return;
+        }
         
         var current = result[0].current
         var location = result[0].location
@@ -18,11 +21,11 @@ exports.run = (client, message, args) => {
 
         let weatherembd = new Discord.RichEmbed()
             .setColor('FFA500')
-            .setTitle("Météo à " + location.name, true)
+            .setTitle("Météo à " + current.observationpoint, true)
             .addField('Jour', current.day, true)
             .addField('Date', current.date, true)
-            .addField("Température", current.temperature + "°", true)
-            .addField('Ressenti', current.feelslike + "°", true)
+            .addField("Température", current.temperature + "°C", true)
+            .addField('Ressenti', current.feelslike + "°C", true)
             .addField("Vitesse du vent", current.windspeed, true)
             .addField("Sens du vent", current.winddisplay, true)
             .addField('Temps actuel', current.skytext, true)
@@ -36,4 +39,15 @@ exports.run = (client, message, args) => {
             .setFooter(client.user.username, client.user.avatarURL)
         message.channel.send(weatherembd)
     });
+}
+
+exports.help = {
+    name: "weather",
+    description: "Donner la météo à une position définie."
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ["meteo", "météo"]
 }

@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 
-exports.run = (client, message) => {
+exports.run = (client, message, args) => {
 
     var suggestargs = message.content.split().toString().slice(9)
 
@@ -34,13 +34,23 @@ exports.run = (client, message) => {
             .setFooter(client.user.username, client.user.avatarURL)
         suggestcha.send(suggestembed).then(suggestembed => {
         message.channel.send("Votre suggestion a bien été envoyée ! Nous vous donnerons des informations dès que possible !")
-        suggestembed.react(neutre)
-
-        suggestembed.react(check)
-
-        suggestembed.react(xmark)
-                console.log("Terminé")
+        suggestembed.react(check).then(() => {
+            suggestembed.react(neutre).then(() => {
+                suggestembed.react(xmark)
+            })
+        })
             })
         }
     }
+}
+
+exports.help = {
+    name: "suggest",
+    description: "Pour faire une suggestion"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["suggestion"]
 }

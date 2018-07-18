@@ -18,3 +18,14 @@ exports.run = (client, message, args) => {
         message.channel.send(info_embed)
         console.log('info envoyé')
 }
+
+exports.help = {
+    name: "info",
+    description: "Affiche les infos bot"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: ["infobot", "botinfo", "stats", "statistiques"]
+}

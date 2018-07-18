@@ -51,3 +51,14 @@ exports.run = (client, message) => {
             fs.writeFile(`./warnsfiles/${message.guild.id}-warns.json`, `{\n"${userwarnusername}#${userwarndiscrim} (id : ${userwarn.id}) has been warned on": \n"${message.guild.name} (guild id : ${message.guild.id})",\n"Reason": "${raison}"\n}\n\n`)
         })
 }
+
+exports.help = {
+    name: "warn",
+    description: "Pour warn un utilisateur"
+}
+
+exports.conf = {
+    enabled: true,
+    guildOnly: true,
+    aliases: ["avert", "avertir"]
+}

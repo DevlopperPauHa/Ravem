@@ -24,11 +24,13 @@ exports.run = (client, message, args) => {
 }
 
 exports.conf = {
-    userPerm: [],
-    botPerm: ["SEND_MESSAGES"],
-    coolDown: 0,
-    dm: true,
-    category: "Informations",
-    help: "Obtenir des informations sur un emoji",
-    args: "",
-  }
+    enabled: true,
+    guildOnly: false,
+    aliases: ["e", "emoteinfo", "emote"]
+};
+
+exports.help = {
+    name : "emoji",
+    description: "Montrer les infos d'un emoji",
+    usage: "-emoji <emoji>"
+};

@@ -1,17 +1,40 @@
 const Discord = require('discord.js')
+const os = require('os')
+function convMS(ms) {
+    var d, h, m, s;
+    s = Math.floor(ms / 1000);
+    m = Math.floor(s / 60);
+    s = s % 60;
+    h = Math.floor(m / 60);
+    m = m % 60;
+    d = Math.floor(h / 24);
+    h = h % 24;
+    return {
+        d: d,
+        h: h,
+        m: m,
+        s: s
+    };
+};
 
 exports.run = (client, message, args) => {
+
+    let cpu = os.loadavg();
+    let u = convMS(client.uptime);
+    let uptime = u.h + "h" + u.m + "m" + u.s + "s"
+
     var info_embed = new Discord.RichEmbed()
             .setColor('7EBCAD')
             .setTitle(`Informations sur ${client.user.username}`)
-            .addField('Développeurs :', "Ravem Team")
-            .addField('Library :', "Discord.js")
-            .addField('Base de données :', "lowdb")
-            .addField('Language de code :', "JavaScript")
+            .addField('Développeurs :', "Ravem Team", true)
+            .addField('Library :', "Discord.js", true)
+            .addField('Base de données :', "lowdb", true)
+            .addField("Uptime :", uptime, true)
+            .addField("Mémoire utilisée :", Math.round(process.memoryUsage().rss / 1024 / 1024) + " MB", true)
             .setTimestamp(new Date)
-            .addField('Serveurs :', `${client.guilds.size}`)
-            .addField('Utilisateurs', client.users.size)
-            .addField('Version du bot :', "1.0.0")
+            .addField('Serveurs :', `${client.guilds.size}`, true)
+            .addField('Utilisateurs', client.users.size, true)
+            .addField('Version du bot :', "1.0.0", true)
             .addField('\n\nLiens :', "__FanCreate :__ https://discord.gg/Xf4Bkh3\n__FanShare :__ https://discord.gg/V3ad45Q \n__Lien du bot :__ https://lc.cx/mQz7")
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
             .setFooter(client.user.username, client.user.avatarURL)
@@ -27,5 +50,5 @@ exports.help = {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["infobot", "botinfo", "stats", "statistiques"]
+    aliases: ["botinfo", "stats", "statistiques"]
 }

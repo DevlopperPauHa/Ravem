@@ -60,5 +60,5 @@ exports.help = {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ["avert", "avertir"]
+    aliases: ["avert"]
 }

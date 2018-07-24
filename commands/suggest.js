@@ -52,5 +52,5 @@ exports.help = {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ["suggestion"]
+    aliases: []
 }

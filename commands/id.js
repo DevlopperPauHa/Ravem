@@ -12,5 +12,5 @@ exports.help = {
 exports.conf = {
     enabled: true,
     guildOnly: false,
-    aliases: ["id"]
+    aliases: []
 }

@@ -57,5 +57,5 @@ exports.help = {
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ["ban"]
+    aliases: []
 }

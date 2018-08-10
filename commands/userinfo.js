@@ -1,23 +1,51 @@
 const Discord = require('discord.js')
+const moment = require('moment')
+moment.locale('fr')
 
 exports.run = (client, message, args) => {
 
-        let usermtnd = message.mentions.users.first() ? message.mentions.users.first() : message.author
-        let usericon = usermtnd.avatarURL
-        let onthesrv = message.guild.joinedAt.toString().split(" ")
-        let usercreate = usermtnd.createdAt.toString().split(" ")
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
+    var usr;
+
+    if(!args[0]) {
+        usr = message.author
+    }
+    else if(message.guild.members.exists("id", args[0])) {
+        usr = message.guild.members.get(args[0])
+    }
+    else if(message.mentions.users.first()) {
+        usr = message.mentions.users.first()
+    }
+    else if(message.guild.members.exists("name", args[0])) {
+        usr = message.guild.members.find("name", args[0])
+    }
+    else if(usr === undefined) {
+        return message.channel.send("L'utilisateur demandé n'existe pas. Essayez avec l'identifiant, le nom ou la mention.")
+            
+    }
+        let usericon = usr.avatarURL
+        let onthesrv = usr.joinedAt
+        let usercreate = usr.createdAt
+        var onthesrvf = moment(onthesrv).format('dddd Do MMMM YYYY, HH:mm:ss')
+        var onthesrvfr = onthesrvf.substring(0,1).toLocaleUpperCase() + onthesrvf.substring(1);
+        var usrf = moment(usercreate).format('dddd Do MMMM YYYY, HH:mm:ss')
+        var usrfr = usrf.substring(0,1).toLocaleUpperCase() + usrf.substring(1);
+        var ubot = usr.bot === true ? "<:done:473803590532595712>" : "<:nope:473803719440597003>";
         let ui_embed = new Discord.RichEmbed()
             .setColor('7EBCAD')
-            .setAuthor(`Information sur` + usermtnd.tag, usermtnd.avatarURL)
-            .addField('Username', usermtnd.username)
-            .addField('Discriminateur', "#" + usermtnd.discriminator)
-            .addField('ID', usermtnd.id)
-            .addField('Tag', usermtnd.tag)
-            .addField('Statut', usermtnd.presence.status)
-            .addField('Utilisateur bot', usermtnd.bot)
+            .setAuthor(`Information sur` + usr.tag, usr.avatarURL)
+            .addField('Username', usr.username)
+            .addField('Discriminateur', "#" + usr.discriminator)
+            .addField('ID', usr.id)
+            .addField('Tag', usr.tag)
+            .addField('Statut', usr.presence.status)
+            .addField('Utilisateur bot', ubot)
             .setTimestamp(new Date)
-            .addField('Date de création du compte', usercreate[0] + ' ' + usercreate[2] + ' ' + usercreate[1] + ' ' + usercreate[3] + ", " + usercreate[4])
-            .addField('Date d\'\arrivée sur le serveur', onthesrv[0] + ' ' + onthesrv[2] + ' ' + onthesrv[1] + ' ' + onthesrv[3] + ", " + onthesrv[4])
+            .addField('Date de création du compte', usrfr)
+            .addField('Date d\'\arrivée sur le serveur', onthesrvfr)
             .setThumbnail(usericon)
             .setFooter(client.user.username, client.user.avatarURL)
         message.channel.send(ui_embed)

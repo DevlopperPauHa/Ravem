@@ -10,10 +10,10 @@ exports.run = (client, message, args) => {
             .setColor('7EBCAD')
             .setTitle('Commandes du bot')
             .setDescription('Rappel : les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l\'exécution de votre commande. \nNote : Vous pouvez aussi faire `-help {commande}` pour avoir plus d\'informations sur celle-ci.\n\n')
-            .addField('\n\nModération :', "`kick` `ban` `purge` `warn`")
-            .addField('\n\nUtilitaires :', "`help` `meteo` `id` `serverinfo` `channelinfo` `userinfo` `report`")
-            .addField('\n\nFun :', "`ping` `say`")
-            .addField('\n\nInformations :', "`info` `fancreate` `fanshare`")
+            .addField('Informations :', "`info` `fancreate` `fanshare` `emoji` `userinfo` `channelinfo` `serverinfo` `ping`")
+            .addField('Modération :', "`kick` `ban` `purge` `warn`")
+            .addField('Fun :', "`ping` `say` `lmgtfy`")
+            .addField('Utilitaires :', "`help` `meteo` `id` `report` `avatar` `suggest`")
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
             .setTimestamp(new Date)
             .setFooter(client.user.username, client.user.avatarURL)
@@ -234,11 +234,27 @@ exports.run = (client, message, args) => {
                                                                             .setTitle('Commande : code')
                                                                             .addField("Description de la commande", "Vous voulez voir le code d'une commande en particulier ? Cette cmmande est faite pour cela.")
                                                                             .setDescription(rappel)
-                                                                            .addField("Utilisation", "`-report {votre raison}`")
+                                                                            .addField("Utilisation", "`-code {commande}`")
+                                                                            .addField("Alias", "`-c`")
                                                                             .setTimestamp(new Date)
                                                                             .setThumbnail(client.user.avatarURL)
                                                                             .setFooter(client.user.username, client.user.avatarURL)
                                                                         message.channel.send(codeembd)
+                                                                    }
+                                                                    else {
+                                                                        if((args[0] === "8ball") || (args[0] === "8b")) {
+                                                                            let ballembed = new Discord.RichEmbed()
+                                                                                .setColor(embedcolor)
+                                                                                .setTitle("Commande : 8ball")
+                                                                                .setDescription(rappel)
+                                                                                .addField("Description de la commande", "Le bot répond par une question que vous avez posé juste avant. :8ball:")
+                                                                                .addField("Utilisation", "`-8ball {question}`")
+                                                                                .addField("Alias", "`-8b`")
+                                                                                .setTimestamp(new Date)
+                                                                                .setThumbnail(client.user.avatarURL)
+                                                                                .setFooter(client.user.username, client.user.avatarURL)
+                                                                            message.channel.send(ballembed)
+                                                                        }
                                                                     }
                                                                 }
                                                             }

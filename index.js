@@ -10,9 +10,9 @@ const log = (message) => {
 
 client.on("ready", () => {
   client.user.setActivity(`-help | ${client.users.size} utilisateurs`, {
-        type: 'Watching',
+        type: 'Watching'
       });
-      console.log("Bonjour Paulé, je suis prêt !");
+      console.log("Hey Paulé, I'm ready !");
 });
 
 fs.readdir("./events/", (err, files) => {

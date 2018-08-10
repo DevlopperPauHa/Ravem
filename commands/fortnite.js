@@ -1,33 +1,25 @@
 const Discord = require("discord.js")
-const ftn = require("fortnitetracker-7days-stats")
+const fortnite = require("fortnite")
+const api = new fortnite('6e760d67-4161-4461-a319-a027387d7bf0')
 
 exports.run = (client, message, args) => {
+    api.user('Number1Swifty', 'xbl').then(()=> {
 
-const type = args[0]
-const search = message.content.slice(2)
-
-ftn.getStats(search, type, (err, result) => {
-    if(err) {
-        message.channel.send("`" + err.message + "`");
-    }
-    else {
-        const skin = result.skinUrl
         var ftnembd = new Discord.RichEmbed()
             .setColor("7EBCAD")
-            .setTitle("Statistiques Fortnite de l'utilisateur" + result.accountName + "durant les sept derniers jours")
-            .addField("Pseudo", result.accountName)
-            .addField("Plateforme", result.platform)
-            .addField("Score total", result.score)
-            .addField("Nombre de kills", result.kills)
-            .addField("Nombre de parties gagnées", result.wins)
-            .addField("Nombre de parties jouées", result.matches)
-            .addField("Temps de jeu en minutes", result.minutesPlayed)
+            .setTitle("Statistiques Fortnite de l'utilisateur" + user.username)
+            .addField("Pseudo", user.username)
+            .addField("Plateforme", user.platform)
+            .addField("Score total", user.score)
+            .addField("Nombre de kills", "a")
+            .addField("Nombre de parties gagnées", "a")
+            .addField("Nombre de parties jouées", "a")
+            .addField("Temps de jeu en minutes", "a")
             .setThumbnail(skin)
             .setTimestamp()
             .setFooter(client.user.username + client.user.avatarURL)
         messsage.channel.send(ftnembd)
-    }
-})
+    });
 }
 
 exports.help = {
@@ -36,7 +28,7 @@ exports.help = {
 
 exports.conf = {
     dm: true,
-    enabled: true,
+    enabled: false,
     aliases: ["ftn", "fortnite-search", "ftn-search"]
 }
 

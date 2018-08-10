@@ -1,4 +1,5 @@
 const fs = require("fs"); //go souffrir :noel:
+const h = require('hastebin-generator')
 
 exports.run = (client, message, args) => {
     let command;
@@ -13,7 +14,9 @@ exports.run = (client, message, args) => {
         if (commandFile.length < 1992) {
             message.channel.send(`\`\`\`js\n` + commandFile + `\`\`\``)
         } else {
-            message.channel.send(`Le code de la commande est supérieur à 2000 caractères. (${commandFile.length})`)
+            h(commandFile, 'js').then(r => {
+            message.channel.send(`Le code de la commande est supérieur à 2000 caractères. (${commandFile.length})\nVoivi un hastebin : ${r}`)
+            })
         }
 
     }

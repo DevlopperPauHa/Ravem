@@ -1,4 +1,4 @@
-https://cdn.discordapp.com/avatars/450746033727864832/6d517825fae966612361641ef343ffe4.png?size=2048
+<img src="https://cdn.discordapp.com/avatars/450746033727864832/6d517825fae966612361641ef343ffe4.png?size=2048">
 
 
 **Un bot multifonctions concu par la filiale Ravem, pour desservir nos utilisateurs.**

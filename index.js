@@ -4,16 +4,9 @@ const config = require("./config.json")
 const fs = require("fs")
 const moment = require("moment");
 
-const log = (message) => {
+log = (message) => {
   console.log(`[${moment().format("DD/MM/YYYY HH:mm:ss")}] ${message}`);
 };
-
-client.on("ready", () => {
-  client.user.setActivity(`-help | ${client.users.size} utilisateurs`, {
-        type: 'Watching'
-      });
-      console.log("Hey Paulé, I'm ready !");
-});
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);

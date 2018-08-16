@@ -41,7 +41,7 @@ exports.run = (client, message, args) => {
             .addField('Discriminateur', "#" + usr.user.discriminator)
             .addField('ID', usr.id)
             .addField('Tag', usr.user.tag)
-            .addField('Statut', usr.user.presence.status)
+            .addField('Statut', usr.user.status)
             .addField('Utilisateur bot', ubot)
             .setTimestamp(new Date)
             .addField('Date de création du compte', usrfr)

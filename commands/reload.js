@@ -16,7 +16,7 @@ exports.run = (client, message, args) => {
         m.edit(`Commande \`${command}\` reloaded avec succès.`);
       })
       .catch(e => {
-        m.edit(`Echec du reload de la commande ${command}\n\`\`\`${e.stack}\`\`\``);
+        m.edit(`Echec du reload de la commande ${command}\n\`\`\`${e.error}\`\`\``);
       });
     });
   }

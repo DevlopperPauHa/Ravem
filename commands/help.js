@@ -10,10 +10,11 @@ exports.run = (client, message, args) => {
             .setColor('7EBCAD')
             .setTitle('Commandes du bot')
             .setDescription('Rappel : les caractères tels que [], {} ou <> ne doivent pas être utilisés lors de l\'exécution de votre commande. \nNote : Vous pouvez aussi faire `-help {commande}` pour avoir plus d\'informations sur celle-ci.\n\n')
-            .addField('Informations :', "`info` `fancreate` `fanshare` `emoji` `userinfo` `channelinfo` `serverinfo` `ping`")
+            .addField('Informations :', "`info` `emoji` `userinfo` `channelinfo` `serverinfo` `ping`")
             .addField('Modération :', "`kick` `ban` `purge` `warn`")
             .addField('Fun :', "`ping` `say` `lmgtfy`")
             .addField('Utilitaires :', "`help` `meteo` `id` `report` `avatar` `suggest`")
+            .addField("Autres", "`github` `invite` `math` ")
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
             .setTimestamp(new Date)
             .setFooter(client.user.username, client.user.avatarURL)
@@ -254,6 +255,21 @@ exports.run = (client, message, args) => {
                                                                                 .setThumbnail(client.user.avatarURL)
                                                                                 .setFooter(client.user.username, client.user.avatarURL)
                                                                             message.channel.send(ballembed)
+                                                                        }
+                                                                        else {
+                                                                            if((args[0] === "math") || (args[0] === "m")) {
+                                                                                let mathembed = new Discord.RichEmbed()
+                                                                                    .setTitle("Commande : math")
+                                                                                    .setColor(embedcolor)
+                                                                                    .setDescription(rappel)
+                                                                                    .addField("Description de la commande", "Laissez le bot calculer votre opération mathématique.")
+                                                                                    .addField("Utilisation", "`-math {opération}`")
+                                                                                    .addField("Alias", "`-m`")
+                                                                                    .setFooter(client.user.username, client.user.avatarURL)
+                                                                                    .setTimestamp()
+                                                                                    .setThumbnail(client.user.avatarURL)
+                                                                                message.channel.send(mathembed)
+                                                                            }
                                                                         }
                                                                     }
                                                                 }

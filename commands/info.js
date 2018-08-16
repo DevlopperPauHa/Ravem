@@ -1,5 +1,7 @@
 const Discord = require('discord.js')
 const os = require('os')
+const fs = require('fs')
+const package = JSON.parse(fs.readFileSync('./package.json', "utf8"))
 function convMS(ms) {
     var d, h, m, s;
     s = Math.floor(ms / 1000);
@@ -34,8 +36,7 @@ exports.run = (client, message, args) => {
             .setTimestamp(new Date)
             .addField('Serveurs :', `${client.guilds.size}`, true)
             .addField('Utilisateurs', client.users.size, true)
-            .addField('Version du bot :', "1.0.0", true)
-            .addField('\n\nLiens :', "__FanCreate :__ https://discord.gg/Xf4Bkh3\n__FanShare :__ https://discord.gg/V3ad45Q \n__Lien du bot :__ https://lc.cx/mQz7")
+            .addField('Version du bot :', package.version, true)
             .setThumbnail('https://cdn.discordapp.com/icons/447920023827251201/7087033799720809aaee2709cec6fdf6.jpg')
             .setFooter(client.user.username, client.user.avatarURL)
         message.channel.send(info_embed)

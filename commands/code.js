@@ -9,6 +9,7 @@ exports.run = (client, message, args) => {
         command = client.aliases.get(args[0]);
     }
     
+    if(command === "eval") return message.channel.send("Cette commande n'existe pas :no_mouth:")
     if (client.commands.has(command)) {
         let commandFile = fs.readFileSync(`./commands/${command}.js`, "utf8")
         if (commandFile.length < 1992) {

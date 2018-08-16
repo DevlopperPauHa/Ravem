@@ -1,6 +1,12 @@
 const Discord = require('discord.js')
+const moment = require('moment')
+moment.locale('fr')
 
 exports.run = (client, message) => {
+
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
 
     var reportargs = message.content.split().toString().slice(9)
 
@@ -16,15 +22,15 @@ exports.run = (client, message) => {
 
     let reportguild = client.guilds.get("447920023827251201")
         let reportcha = reportguild.channels.get("465259561071280138")
-
+        let datef = moment(message.guild.createdAt).format('dddd Do MMMM YYYY, HH:mm:ss');
+        let datefr = datef.substring(0,1).toLocaleUpperCase() + datef.substring(1);
         let guildicon = message.guild.iconURL
-        let reportdate = message.createdAt.toString().split(" ")
         let useravatar = message.author.avatarURL
         let reportembed = new Discord.RichEmbed()
             .setColor("7EBCAD")
             .setAuthor(`Nouveau report par ${message.author.username}#${message.author.discriminator} !`, guildicon)
             .addField("Depuis le serveur :", message.guild.name)
-            .addField("Date du report :", reportdate[0] + ' ' + reportdate[2] + ' ' + reportdate[1] + ' ' + reportdate[3] + ", " + reportdate[4])
+            .addField("Date du report :", datefr)
             .addField('Argumentation :', reportargs)
             .setThumbnail(useravatar)
             .setTimestamp(new Date)
